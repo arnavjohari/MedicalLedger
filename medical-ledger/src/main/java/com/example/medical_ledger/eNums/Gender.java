@@ -1,4 +1,4 @@
-package com.example.medical_ledger.Entity;
+package com.example.medical_ledger.eNums;
 
 public enum Gender {
     Male,
