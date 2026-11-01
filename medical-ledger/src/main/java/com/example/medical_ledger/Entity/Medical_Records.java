@@ -1,5 +1,6 @@
 package com.example.medical_ledger.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,9 +26,11 @@ public class Medical_Records {
     private String prescription;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     private Boolean isEmergency;
 
+    @JsonBackReference // When serialize is done as this is a child class jackson ignores the user part in it and only gives records
     @ManyToOne
     @JoinColumn(name = "Patient_id" , nullable = false)
     private User user;

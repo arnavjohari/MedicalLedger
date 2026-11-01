@@ -42,9 +42,9 @@ public class UserService {
         UserToChange.setEmail(user.getEmail());
         UserToChange.setGender(user.getGender());
         UserToChange.setPassword(user.getPassword());
-        UserToChange.setPhone_no(user.getPhone_no());
+        UserToChange.setPhoneNo(user.getPhoneNo());
         UserToChange.setRole(user.getRole());
-        UserToChange.setCreated_at(user.getCreated_at());
+        UserToChange.setCreatedAt(user.getCreatedAt());
 
         userRepository.save(UserToChange);
     }

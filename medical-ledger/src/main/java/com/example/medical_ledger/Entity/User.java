@@ -2,6 +2,7 @@ package com.example.medical_ledger.Entity;
 
 import com.example.medical_ledger.eNums.Gender;
 import com.example.medical_ledger.eNums.Role;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,9 +31,12 @@ public class User {
     private String password;
 
     @CreationTimestamp
-    private LocalDateTime created_at;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     private  int age;
-    private String phone_no;
+    @Column(name = "phone_no")
+    private String phoneNo;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -40,6 +44,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @JsonManagedReference  // When Serialize is done as this is parent class jackson includes the medical records in this user
     @OneToMany(mappedBy = "user")
     private List<Medical_Records> medicalRecords = new ArrayList<>();
 

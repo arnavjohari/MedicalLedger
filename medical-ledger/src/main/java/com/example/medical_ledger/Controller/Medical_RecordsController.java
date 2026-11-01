@@ -22,6 +22,11 @@ public class Medical_RecordsController {
         medicalRecordsService.createRecord(medicalRecords, patient_id);
 
     }
+
+    @GetMapping("/get/{patient_id}/{doctor_id}")
+    public List<Medical_Records> getRecords(@PathVariable Long patient_id , @PathVariable Long doctor_id){
+        return medicalRecordsService.getRecords(patient_id , doctor_id);
+    }
     @DeleteMapping("/delete/{id}")
     public void  deleteRecord(@PathVariable Long id) {  // Todo - add edge cases
        medicalRecordsService.deleteRecord(id);
