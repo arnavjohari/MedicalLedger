@@ -26,16 +26,18 @@ public class UserService {
     }
 
     @Transactional
-    public Optional<User> getUser(Long id){
-        return userRepository.findById(id);
-    } // Todo - use .orElseThrow
+    public User getUser(Long id){
+
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("No User Found"));
+    }
 
     @Transactional
     public void updateUser(User user , Long id){
-        Optional<User> existingUser = userRepository.findById(id);
 
-        User UserToChange = existingUser.get();   // First we find by findById then get it
-        //Todo - add edge case
+        User UserToChange = userRepository.findById(id).orElseThrow(() -> new RuntimeException("No User Found"));
+
+
+        //Todo - add edge case and add checks so onlt the changed value is set not all
 
         UserToChange.setAge(user.getAge());
         UserToChange.setName(user.getName());
