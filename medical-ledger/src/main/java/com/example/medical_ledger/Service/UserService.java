@@ -1,8 +1,7 @@
 package com.example.medical_ledger.Service;
 
-import com.example.medical_ledger.Entity.Medical_Records;
 import com.example.medical_ledger.Entity.User;
-import com.example.medical_ledger.Repository.Medical_RecordsRepository;
+import com.example.medical_ledger.Repository.MedicalRecordsRepository;
 import com.example.medical_ledger.Repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -12,9 +11,9 @@ import java.util.Optional;
 @Service
 public class UserService {
     private UserRepository userRepository;
-    private Medical_RecordsRepository medicalRecordsRepository;
+    private MedicalRecordsRepository medicalRecordsRepository;
 
-    public UserService(UserRepository userRepository , Medical_RecordsRepository medicalRecordsRepository) {
+    public UserService(UserRepository userRepository , MedicalRecordsRepository medicalRecordsRepository) {
 
         this.medicalRecordsRepository = medicalRecordsRepository;
         this.userRepository = userRepository;
@@ -39,15 +38,37 @@ public class UserService {
 
         //Todo - add edge case and add checks so onlt the changed value is set not all
 
-        UserToChange.setAge(user.getAge());
-        UserToChange.setName(user.getName());
-        UserToChange.setEmail(user.getEmail());
-        UserToChange.setGender(user.getGender());
-        UserToChange.setPassword(user.getPassword());
-        UserToChange.setPhoneNo(user.getPhoneNo());
-        UserToChange.setRole(user.getRole());
-        UserToChange.setCreatedAt(user.getCreatedAt());
+        if(user.getAge() != null) {
+            UserToChange.setAge(user.getAge());
+        }
 
+        if(user.getName() != null) {
+            UserToChange.setName(user.getName());
+        }
+
+        if(user.getEmail() != null) {
+            UserToChange.setEmail(user.getEmail());
+        }
+
+        if(user.getGender() != null) {
+            UserToChange.setGender(user.getGender());
+        }
+
+        if(user.getPassword() != null) {
+            UserToChange.setPassword(user.getPassword());
+        }
+
+        if(user.getPhoneNo() != null) {
+            UserToChange.setPhoneNo(user.getPhoneNo());
+        }
+
+        if(user.getRole() != null) {
+            UserToChange.setRole(user.getRole());
+        }
+
+        if(user.getCreatedAt() != null) {
+            UserToChange.setCreatedAt(user.getCreatedAt());
+        }
         userRepository.save(UserToChange);
     }
 

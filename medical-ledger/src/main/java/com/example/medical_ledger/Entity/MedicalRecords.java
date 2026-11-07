@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "medical_records")
-public class Medical_Records {
+public class MedicalRecords {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Medical_Records {
     @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-    private Boolean isEmergency;
+
 
     @JsonBackReference // When serialize is done as this is a child class jackson ignores the user part in it and only gives records
     @ManyToOne

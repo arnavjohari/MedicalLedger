@@ -2,8 +2,10 @@ package com.example.medical_ledger.Controller;
 
 import com.example.medical_ledger.Entity.PatientProfile;
 import com.example.medical_ledger.Service.PatientProfileService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/profile")
 public class PatientProfileController {
@@ -19,6 +21,11 @@ public class PatientProfileController {
         patientProfileService.createProfile(patientProfile ,user_id);
     }
 
+    @PutMapping("/update/{user_id}")
+    public void updateProfile(@RequestBody PatientProfile patientProfile,@PathVariable Long user_id){
+        patientProfileService.updateProfile(patientProfile , user_id);
+    }
+
     @GetMapping("/get/{user_id}")
     public PatientProfile getProfile(@PathVariable Long user_id){
        return patientProfileService.getProfile(user_id);
@@ -29,5 +36,4 @@ public class PatientProfileController {
         patientProfileService.deleteProfile(user_id);
     }
 
-    // Todo - update after i learn how to update only specific fields not entire
 }

@@ -1,11 +1,8 @@
 package com.example.medical_ledger.Controller;
 
-import com.example.medical_ledger.Entity.Medical_Records;
 import com.example.medical_ledger.Entity.User;
 import com.example.medical_ledger.Service.UserService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/user")

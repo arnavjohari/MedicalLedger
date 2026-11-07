@@ -1,9 +1,7 @@
 package com.example.medical_ledger.Repository;
 
-import com.example.medical_ledger.Entity.Shared_Access;
-import com.example.medical_ledger.eNums.Status;
+import com.example.medical_ledger.Entity.SharedAccess;
 import jakarta.transaction.Transactional;
-import org.hibernate.sql.Update;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +13,7 @@ import java.util.Optional;
 
 
 @Repository
-public interface Shared_AccessRepository extends JpaRepository<Shared_Access , Long> {
+public interface SharedAccessRepository extends JpaRepository<SharedAccess, Long> {
 
     @Modifying
     @Transactional
@@ -36,6 +34,6 @@ public interface Shared_AccessRepository extends JpaRepository<Shared_Access , L
 
     //Boolean existsByUserPatientIdAndUserDoctorId(Long patient_id , Long doctor_id);
 
-    Optional<Shared_Access> findByUserPatientIdAndUserDoctorId(Long patient_id , Long doctor_id);
+    Optional<SharedAccess> findByUserPatientIdAndUserDoctorId(Long patient_id , Long doctor_id);
 
 }

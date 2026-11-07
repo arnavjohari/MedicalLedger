@@ -15,17 +15,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "shared_access")
-public class Shared_Access {
+public class SharedAccess {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "is_active")
-    private Boolean isActive;
-
     @Enumerated(EnumType.STRING)
-    private Status status;
+    @Column(nullable = false)
+    private Status status;  // Puts the default as Pending as it should be pending first then active
     private LocalDateTime validTill;
 
     @ManyToOne

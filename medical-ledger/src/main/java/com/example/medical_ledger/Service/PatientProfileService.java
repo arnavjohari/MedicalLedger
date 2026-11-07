@@ -27,6 +27,37 @@ public class PatientProfileService {
     }
 
     @Transactional
+    public void updateProfile(PatientProfile patientProfile , Long user_id){
+        PatientProfile currProfile = patientProfileRepository.findByUser_id(user_id);
+
+        if(patientProfile.getAllergy() != null){
+            currProfile.setAllergy(patientProfile.getAllergy());
+        }
+
+        if(patientProfile.getChronicDiseases() != null){
+            currProfile.setChronicDiseases(patientProfile.getChronicDiseases());
+        }
+
+        if(patientProfile.getEmergencyContactAge() != null){
+            currProfile.setEmergencyContactAge(patientProfile.getEmergencyContactAge());
+        }
+
+        if(patientProfile.getEmergencyContactName() != null){
+            currProfile.setEmergencyContactName(patientProfile.getEmergencyContactName());
+        }
+
+        if(patientProfile.getEmergencyContactRelation() != null){
+            currProfile.setEmergencyContactRelation(patientProfile.getEmergencyContactRelation());
+        }
+
+        if(patientProfile.getEmergencyContactPhone() != null){
+            currProfile.setEmergencyContactPhone(patientProfile.getEmergencyContactPhone());
+        }
+
+        patientProfileRepository.save(currProfile);
+    }
+
+    @Transactional
     public PatientProfile getProfile(Long user_id){
        return patientProfileRepository.findByUser_id(user_id);
     }
